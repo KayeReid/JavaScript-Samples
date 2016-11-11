@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+
+<p> Please enter the information below for your new contact. </p>
+
+  First name: <input type="text" id="fname"><br>
+  Last name: <input type="text" id="lname"><br>
+  Street Address: <input type="text" id="address"><br>
+  City: <input type="text" id="city"><br>
+  State: <input type="text" id="state"><br>
+  Zip Code: <input type="text" id="zip"><br>
+  Phone Number: <input type="text" id="number"><br>
+  <input type="submit" onclick="myFunction()" value= "Submit">
+  
+  <button type="button" onclick = "viewAddresses()"> View Address Book </button>
+
+
+
+<p id="contactInfo"></p>
+<p id="addressbook"></p>
+<script>
+var addressbook = " ";
+var contactNum = 0;
+
+function myFunction() {
+	var first = document.getElementById("fname").value;
+	var last  = document.getElementById("lname").value;
+	var address  = document.getElementById("address").value;
+	var city  = document.getElementById("city").value;
+	var state  = document.getElementById("state").value;
+	var zip  = document.getElementById("zip").value;
+	var number  = document.getElementById("number").value;
+	contact = (contactNum = contactNum+1) + (": \n"+ first + " " + last + ", " + address + ", " + city + ", " + state + ", " + zip + ", " + number);
+	addressbook = addressbook + contact + "\b";
+	document.getElementById("contactInfo").innerHTML = first + " " + last + ", " + address + ", " + city + "," + state + ", " + zip + ", " + number;
+	}
+function viewAddresses()
+{
+	if( addressbook == null)
+	{document.getElementById("addressbook").innerHTML = "You have not added a contact yet";}
+	else
+	{document.getElementById("addressbook").innerHTML = addressbook;}
+	
+}
+
+</script>
+
+</body>
+</html>
