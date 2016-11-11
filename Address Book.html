@@ -17,12 +17,11 @@
   
   <button type="button" onclick = "viewAddresses()"> View Address Book </button>
 
-
-
 <p id="contactInfo"></p>
 <p id="addressbook"></p>
+
 <script>
-var addressbook = " ";
+var addressbook = null;
 var contactNum = 0;
 
 function myFunction() {
@@ -33,16 +32,19 @@ function myFunction() {
 	var state  = document.getElementById("state").value;
 	var zip  = document.getElementById("zip").value;
 	var number  = document.getElementById("number").value;
-	contact = (contactNum = contactNum+1) + (": \n"+ first + " " + last + ", " + address + ", " + city + ", " + state + ", " + zip + ", " + number);
-	addressbook = addressbook + contact + "\b";
-	document.getElementById("contactInfo").innerHTML = first + " " + last + ", " + address + ", " + city + "," + state + ", " + zip + ", " + number;
+	contact = (contactNum = contactNum+1) + (": "+ first + " " + last + ", " + address + ", " + city + ", " + state + ", " + zip + ", " + number);
+	if (addressbook == null)
+	{ addressbook = contact + "<br>";}
+	else
+	{ addressbook = addressbook + contact + "<br>";}
+	document.getElementById("contactInfo").innerHTML = "New Contact: " + first + " " + last + ", " + address + ", " + city + ", " + state + ", " + zip + ", " + number;
 	}
 function viewAddresses()
 {
-	if( addressbook == null)
-	{document.getElementById("addressbook").innerHTML = "You have not added a contact yet";}
+	if( addressbook != null)
+	{document.getElementById("addressbook").innerHTML = "Address Book: <br> " + addressbook;}
 	else
-	{document.getElementById("addressbook").innerHTML = addressbook;}
+	{document.getElementById("addressbook").innerHTML = "You have not added a contact yet";}
 	
 }
 
